@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="E:/.NET_Projects/BookManagementProject/BookManagement/BookManagement.Business/BookManagement.Business.csproj" Id="ec8f6b42-e96a-4c09-9c64-5e120ed3d5a2" />
+  <Project Path="E:/.NET_Projects/BookManagementProject/BookManagement/BookManagement.DataAccess/BookManagement.DataAccess.csproj" Id="04adca7e-01b5-4076-9c57-a55c58ca0a48" />
+  <Project Path="E:/.NET_Projects/BookManagementProject/BookManagement/BookManagement.Models/BookManagement.Models.csproj" Id="7f7d713c-9bb3-40da-827f-52ebe454c48f" />
+  <Project Path="E:/.NET_Projects/BookManagementProject/BookManagement/BookManagement.Utility/BookManagement.Utility.csproj" Id="7b292212-9bbe-44b8-b47a-a6240632103f" />
+  <Project Path="E:/.NET_Projects/BookManagementProject/BookManagement/BookManagement/BookManagementWeb.csproj" />
+</Solution>

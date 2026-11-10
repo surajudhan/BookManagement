@@ -1,0 +1,275 @@
+﻿@model OrderHeader
+@{
+    var isCustomer = User.IsInRole(SD.RoleCustomer);
+    var container = isCustomer ? "container my-1 pt-3" : "container-fluid py-1";
+}
+
+<div class="@container">
+    <form method="post">
+        @* TODO: Add hidden input for order ID *@
+        <input asp-for="@Model.Id" hidden />
+
+        @* TODO: Add back to orders link *@
+        <a asp-area="Admin" asp-controller="Order" asp-action="Index" class="text-decoration-none text-secondary small fw-medium d-inline-flex align-items-center gap-1 mb-3">
+            <i class="bi bi-arrow-left"></i> Back to orders
+        </a>
+
+        <div class="card border shadow-sm overflow-hidden">
+            <div class="card-header text-white py-3 px-4" style="background: linear-gradient(to right, #065f46, #282828, #191414);">
+                <h5 class="mb-0 fw-bold">
+                    <i class="bi bi-receipt me-2"></i>Order #@Model.Id<span></span>
+                    @* TODO: Display order ID *@
+                </h5>
+                <p class="mb-0 small" style="color: #1DB954;">Placed on  @Model.OrderDate.ToShortDateString() <span></span></p>
+                @* TODO: Display order date *@
+
+            </div>
+
+            <div class="card-body p-4">
+                <div class="row g-5">
+                    <!-- Left column: Shipping info -->
+                    <div class="col-lg-6">
+                        <h6 class="text-uppercase fw-semibold text-secondary mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">
+                            ORDER DETAILS
+                        </h6>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Name</label>
+                            <div class="col-8">
+
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.Name" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.Name" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Phone</label>
+                            <div class="col-8">
+                                @* TODO: Bind to Phone property *@
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.PhoneNumber" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.PhoneNumber" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Address</label>
+                            <div class="col-8">
+                                @* TODO: Bind to Address property *@
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.StreetAddress" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.StreetAddress" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="StreetAddress" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">City</label>
+                            <div class="col-8">
+                                @* TODO: Bind to City property *@
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.City" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.City" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="City" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">State</label>
+                            <div class="col-8">
+                                @* TODO: Bind to State property *@
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.State" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.State" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="State" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Zip Code</label>
+                            <div class="col-8">
+                                @* TODO: Bind to PostalCode property *@
+                                @if (isCustomer)
+                                {
+                                    <input asp-for="@Model.PostalCode" type="text" disabled class="form-control form-control-sm" />
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.PostalCode" type="text" class="form-control form-control-sm" />
+                                }
+                                <span asp-validation-for="PostalCode" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Email</label>
+                            <div class="col-8">
+                                @* TODO: Display user email (read-only) *@
+                                <input asp-for="@Model.ApplicationUser.Email" type="email" disabled class="form-control-plaintext form-control-sm" />
+                                <span asp-validation-for="ApplicationUser.Email"></span>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 mb-2">
+                            <label class="col-4 col-form-label small fw-medium text-secondary">Order Date</label>
+                            <div class="col-8">
+                                @* TODO: Display order date (read-only) *@
+                                <input type="email" disabled class="form-control-plaintext form-control-sm" value="@Model.OrderDate.ToShortDateString()" />
+                            </div>
+                        </div>
+
+                        @if (Model.OrderStatus == SD.StatusShipped )
+                        {
+                            <div class="row g-2 mb-2">
+                                <label class="col-4 col-form-label small fw-medium text-secondary">Carrier</label>
+                                <div class="col-8">
+                                    @* TODO: Bind to Carrier property *@
+                                    @if (isCustomer)
+                                    {
+                                        <input asp-for="@Model.Carrier" type="text" disabled class="form-control form-control-sm" />
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="Carrier" type="text" id="carrier" class="form-control form-control-sm" />
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="row g-2 mb-2">
+                                <label class="col-4 col-form-label small fw-medium text-secondary">Tracking</label>
+                                <div class="col-8">
+                                    @* TODO: Bind to TrackingNumber property *@
+                                    @if (isCustomer)
+                                    {
+                                        <input asp-for="@Model.TrackingNumber" type="text" disabled class="form-control form-control-sm" />
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="TrackingNumber" type="text" id="trackingNumber" class="form-control form-control-sm" />
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (Model.ShippingDate != default(DateTime))
+                        {
+                            <div class="row g-2 mb-2">
+                                <label class="col-4 col-form-label small fw-medium text-secondary">Shipping Date</label>
+                                <div class="col-8">
+                                    @* TODO: Display shipping date (read-only) *@
+                                    <input type="text" readonly class="form-control-plaintext form-control-sm" value="@Model.ShippingDate.ToShortDateString()" />
+                                </div>
+                            </div>
+                        }
+
+                        @if (!isCustomer)
+                        {
+                            <button asp-action="UpdateOrderDetails" type="submit" class="btn btn-accent w-100 fw-semibold mt-3">
+                                Update Order Details
+                            </button>
+                        }
+
+                    </div>
+
+                    <!-- Right column: Order summary -->
+                    <div class="col-lg-6">
+                        <h6 class="text-uppercase fw-semibold text-secondary mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">
+                            Order Summary
+                        </h6>
+
+                        <span class="badge bg-dark mb-3">
+                            <i class="bi bi-info-circle me-1"></i> <span>@Model.OrderStatus</span>
+                            @* TODO: Display order status *@
+                        </span>
+
+                        <div class="border rounded overflow-hidden mb-4">
+
+                            @foreach (var order in Model.OrderDetails)
+                            {
+
+                                <div class="d-flex justify-content-between align-items-start p-3 border-bottom">
+                                    <div>
+                                        <p class="fw-medium small mb-0">@order.Product.Title</p>
+
+                                        <p class="text-secondary mb-0" style="font-size: 0.75rem;">
+                                            @order.Product.Price.ToString("c") X @order.Count
+
+                                        </p>
+                                    </div>
+                                    <p class="fw-semibold small mb-0" style="color: #17A34A;">
+                                        @((order.Product.Price * order.Count).ToString("c"))
+
+                                    </p>
+                                </div>
+                            }
+
+                            <div class="d-flex justify-content-between align-items-center p-3 text-white" style="background: linear-gradient(to right, #065f46, #282828, #191414);">
+                                <span class="fw-bold small text-uppercase">Total</span>
+                                <span class="fw-bold fs-5">@(Model.OrderTotal.ToString("c"))</span>
+                                @* TODO: Display order total *@
+                            </div>
+                        </div>
+
+                        @if (!isCustomer)
+                        {
+                            <div class="d-grid gap-2">
+                                @if (Model.OrderStatus == SD.StatusApproved)
+                                {
+                                    <button asp-action="UpdateOrderStatus" asp-route-status="@SD.StatusInProcess" type="submit" class="btn btn-accent fw-semibold">
+                                        Start Processing
+                                    </button>
+                                }
+
+                                @if (Model.OrderStatus == SD.StatusInProcess)
+                                {
+                                    <button asp-action="UpdateOrderStatus" asp-route-status="@SD.StatusShipped" type="submit" onclick="return validateInput()" class="btn btn-warning fw-semibold">
+                                        Ship Order
+                                    </button>
+                                }
+                                @if (Model.OrderStatus != SD.StatusCancelled && Model.OrderStatus != SD.StatusRefunded && Model.OrderStatus != SD.StatusShipped)
+                                {
+                                    <button asp-action="UpdateOrderStatus" asp-route-status="@SD.StatusCancelled" type="submit" class="btn btn-danger fw-semibold">
+                                        Cancel Order
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+}
