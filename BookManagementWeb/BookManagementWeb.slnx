@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../BookManagement.Business/BookManagement.Business.csproj" />
+  <Project Path="../BookManagement.DataAccess/BookManagement.DataAccess.csproj" />
+  <Project Path="../BookManagement.Models/BookManagement.Models.csproj" />
+  <Project Path="../BookManagement.Utility/BookManagement.Utility.csproj" />
+  <Project Path="BookManagementWeb.csproj" />
+</Solution>
